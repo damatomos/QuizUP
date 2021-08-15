@@ -1,0 +1,37 @@
+<%- include('partials/essentials/start.ejs')%>
+<%- include('partials/essentials/head.ejs')%>
+<!-- CODE -->
+<body>
+  <%- include('partials/components/navbar.component.ejs')%>
+  <div class="container">
+
+    <h1 class="mt-4 mb-4 text-center text-secondary">
+      Perguntas Recentes
+    </h1>
+
+    <div class="d-flex justify-content-between align-items-center">
+      <small class="text-secondary">Quantidade: <%=questions.length%></small>
+      <a href="/quiz">
+        <button class="btn btn-primary">Novo</button>
+      </a>
+    </div>
+
+    <% questions.forEach( (question) => { %>
+      <div class="card mt-2 mb-4">
+        <div class="card-body">
+          <h2> <%=question.title%> </h2>
+          <p class="text-secondary"> <%=question.description.substring(0, 30)%>... </p>
+        </div>
+        <div class="card-footer">
+          <a href="/question/<%=question.id%>">
+            <button class="btn btn-primary">Responder</button>
+          </a>
+        </div>
+      </div>
+    <% }); %>
+  </div>
+  
+  <%- include('partials/essentials/scripts')%>
+</body>
+<!-- END CODE -->
+<%- include('partials/essentials/end.ejs')%>

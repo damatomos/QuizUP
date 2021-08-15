@@ -1,0 +1,37 @@
+<%- include('partials/essentials/start.ejs')%>
+<%- include('partials/essentials/head.ejs')%>
+<!-- CODE -->
+<body>
+  <%- include('partials/components/navbar.component.ejs')%>
+
+  <div class="container">
+    <hr>
+    <h2><%=question.title%></h2>
+    <p class="text-secondary"><%=question.description%></p>
+    <a href="#response">
+      <small class="badge bg-primary p-2">responder</small>
+    </a>
+    <hr>
+
+    <% responses.forEach((response) => { %>
+      <div class="card mb-2" style="background-color: rgba(0, 0, 0, 0.05);">
+        <div class="card-body">
+          <p class="text-dark"><%=response.body%></p>
+          <div class="d-flex justify-content-end">
+            <small class="text-secondary"><%=response.date%></small>
+          </div>
+        </div>
+      </div>
+    <%})%>
+
+    <form action="/question/<%=question.id%>" method="POST">      
+      <input type="hidden" name="id" value="<%=question.id%>">
+      <textarea class="form-control mt-4 mb-2" placeholder="ex: Você precisa fazer isso..." name="body" rows="8"></textarea>
+      <button type="submit" id="response" class="btn btn-primary mb-4">Responder</button>
+    </form>
+  </div>
+
+  <%- include('partials/essentials/scripts')%>
+</body>
+<!-- END CODE -->
+<%- include('partials/essentials/end.ejs')%>

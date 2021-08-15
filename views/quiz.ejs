@@ -1,0 +1,25 @@
+<%- include('partials/essentials/start.ejs')%>
+<%- include('partials/essentials/head.ejs')%>
+<!-- CODE -->
+<body>
+<%- include('partials/components/navbar.component.ejs')%>
+<div class="container">
+  <div class="card mt-5">
+    <div class="card-body p-0">
+      <div class="card-header">
+        <h3 class="card-title">Nova Pergunta</h3>
+      </div>
+      <form class="p-4" action="/question-save" method="POST">
+        <label class="mt-2 mb-2">Título</label>
+        <input type="text" name="title" placeholder="ex: Como fazer bolo?..." class="form-control" required>
+        <label class="mt-4 mb-2">Descrição</label>
+        <textarea placeholder="ex: Preciso de ajuda para fazer um bolo de chocolate!..." name="description" class="form-control" rows="10" required></textarea>
+        <button type="submit" class="btn btn-primary mt-4">Confirmar</button>
+      </form>
+    </div>
+  </div>
+</div>
+<%- include('partials/essentials/scripts')%>
+</body>
+<!-- END CODE -->
+<%- include('partials/essentials/end.ejs')%>
